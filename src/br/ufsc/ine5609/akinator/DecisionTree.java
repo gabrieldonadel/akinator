@@ -11,6 +11,18 @@ package br.ufsc.ine5609.akinator;
  */
 public class DecisionTree {
     Node root;
+
+    public DecisionTree(String answer) {
+        this.root = new DataNode(answer);
+    }
     
-    
+    public void addQuestion(Node wrong, String question, String answer){
+        QuestionNode node = new QuestionNode(question, new DataNode(answer),wrong);
+        if (root.equals(wrong)){
+            root = node;
+        }else{
+            //percorre a arvore até achar o nó pai
+        }
+    }
+     
 }

@@ -10,5 +10,11 @@ package br.ufsc.ine5609.akinator;
  * @author Dall Agnol
  */
 public class DataNode extends Node{
+    private String answer; 
+
+    public DataNode(String answer) {
+        this.answer = answer;
+    }
+    
     
 }

@@ -14,6 +14,16 @@ public class QuestionNode extends Node{
     private Node yes;
     private Node no;
 
+    public QuestionNode(String question) {
+        this.question = question;
+    } 
+
+    public QuestionNode(String question, Node yes, Node no) {
+        this.question = question;
+        this.yes = yes;
+        this.no = no;
+    } 
+
     public String getQuestion() {
         return question;
     }

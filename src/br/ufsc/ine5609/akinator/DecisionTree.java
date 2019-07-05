@@ -24,5 +24,11 @@ public class DecisionTree {
             //percorre a arvore até achar o nó pai
         }
     }
+
+    public Node getRoot() {
+        return root;
+    }
+    
+    
      
 }

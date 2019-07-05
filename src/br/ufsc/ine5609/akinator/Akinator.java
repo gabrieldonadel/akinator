@@ -33,7 +33,11 @@ public class Akinator extends JApplet {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
+        
+        DecisionTree decisionTree = new DecisionTree("Gato");
+        decisionTree.addQuestion(decisionTree.getRoot(), "Melhor amigo do Homem", "Cachorro");
+        System.out.println(((QuestionNode)decisionTree.getRoot()).getQuestion());
+        /*SwingUtilities.invokeLater(new Runnable() {
             
             @Override
             public void run() {
@@ -56,7 +60,7 @@ public class Akinator extends JApplet {
                 
                 applet.start();
             }
-        });
+        });*/
     }
     
     @Override

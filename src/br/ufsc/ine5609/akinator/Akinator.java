@@ -34,8 +34,8 @@ public class Akinator extends JApplet {
      */
     public static void main(String[] args) {
         
-        DecisionTree decisionTree = new DecisionTree("Gato");
-        decisionTree.addQuestion(decisionTree.getRoot(), "Melhor amigo do Homem", "Cachorro");
+        DecisionTreeMapper  decisionTreeMapper= new DecisionTreeMapper();
+        DecisionTree decisionTree = decisionTreeMapper.getDecisionTree();
         System.out.println(((QuestionNode)decisionTree.getRoot()).getQuestion());
         /*SwingUtilities.invokeLater(new Runnable() {
             

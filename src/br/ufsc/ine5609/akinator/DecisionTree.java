@@ -5,11 +5,13 @@
  */
 package br.ufsc.ine5609.akinator;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Dall Agnol
  */
-public class DecisionTree {
+public class DecisionTree implements Serializable{
     Node root;
 
     public DecisionTree(String answer) {

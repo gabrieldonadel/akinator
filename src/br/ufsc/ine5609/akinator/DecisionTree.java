@@ -22,7 +22,7 @@ public class DecisionTree implements Serializable{
     }
     
     public void addQuestion(Node wrong, String question, String answer){
-        QuestionNode node = new QuestionNode(question, new DataNode(answer),wrong);
+        QuestionNode node = new QuestionNode(question, new DataNode(answer), wrong);
         if (root.equals(wrong)){
             root = node;
         }else{
@@ -33,6 +33,7 @@ public class DecisionTree implements Serializable{
               parentNode.setYes(node);
           }
         }
+        
     }
     
     public QuestionNode getParentNode(Node node){
@@ -52,7 +53,6 @@ public class DecisionTree implements Serializable{
                 if(parentStack.size()==0){
                     parentStack.push(root);
                 }
-                System.out.println(" 's parent is "+((QuestionNode)root).getQuestion());
                  
                 if(((QuestionNode)root).getNo()!=null){
                     parentStack.push(root); 
@@ -84,7 +84,6 @@ public class DecisionTree implements Serializable{
                 if(parentStack.size()==0){
                     parentStack.push(root);
                 }
-                System.out.println(" 's parent is "+((QuestionNode)root).getQuestion());
                 if(key.equals(root)){System.out.println("ae carai");
                 return root;
                 }

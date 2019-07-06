@@ -12,6 +12,10 @@ package br.ufsc.ine5609.akinator;
 public class DataNode extends Node{
     private String answer; 
 
+    public String getAnswer() {
+        return answer;
+    }
+
     public DataNode(String answer) {
         this.answer = answer;
     }

@@ -5,10 +5,12 @@
  */
 package br.ufsc.ine5609.akinator;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Dall Agnol
  */
-public abstract class Node {
+public abstract class Node implements Serializable {
     public abstract boolean isQuestionNode();
 }

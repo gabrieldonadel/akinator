@@ -9,10 +9,11 @@ package br.ufsc.ine5609.akinator;
  *
  * @author Usuario
  */
+import java.util.Scanner;
 public class MainView {
 
     public MainView() {
-        wellcomeView();
+        
     }
     public void wellcomeView(){
         cleanView();
@@ -21,13 +22,55 @@ public class MainView {
         System.out.println("2. Vou tentar adivinhar o animal que você pensou! \n");
         System.out.println("Vamos lá... \n");
         comands();
-
+        print();
+        
     }
     public void cleanView(){
         System.out.println("\n\n\n\n\n\n\n\n\n\n");
     }
     
     public void comands(){
-        System.out.println("[1] PARA SIM\n[2] PARA NÃO\n");
-    } 
+        System.out.println("[1] PARA SIM | [2] PARA NÃO\n");
+    }
+    
+    public void scanner (){
+       Scanner scn = new Scanner(System.in);
+       System.out.print("RESPONDA: ");
+       int decision = scn.nextInt();
+       
+       MainController.getInstance().makeChoice(decision);
+    }
+    
+    public void print(){
+        Node node = MainController.getInstance().getNodecursor();
+        if (node.isQuestionNode()){
+           QuestionNode root = (QuestionNode) MainController.getInstance().getNodecursor();
+           System.out.println(root.getQuestion()+ " ?");
+           scanner();
+           
+        }else{
+            System.out.println("Já sei o que você estava pensando é um: " + ((DataNode)node).getAnswer());
+            System.out.println("Acertei ?");
+            finalAnswer();
+        }     
+    }
+    public void finalAnswer(){
+       Scanner scn = new Scanner(System.in);
+       System.out.print("RESPONDA: ");
+       int decision = scn.nextInt();
+       
+       if (decision == 1){
+           return;
+       }else{
+           System.out.println("Então qual é o animal que você pensou?");
+           System.out.print("RESPONDA: ");
+           scn.nextLine();
+           String newAnimal = scn.nextLine();
+           System.out.println("O que diferência um(a) " + ((DataNode)MainController.getInstance().getNodecursor()).getAnswer() + " de um(a) " + newAnimal +" ?");
+           System.out.print("RESPONDA: ");
+           String newQuestion = scn.nextLine();
+           MainController.getInstance().addAnswer(newAnimal, newQuestion);
+           System.out.println("Na proxima não errarei!");
+       }    
+    }
 }

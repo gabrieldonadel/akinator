@@ -13,17 +13,17 @@ package br.ufsc.ine5609.akinator;
 public class MainController {
     
     private static MainController mainController;
-    
+    private Node nodecursor; 
     private MainView mainView; 
     private DecisionTreeMapper decisionTreeMapper; 
 
     private MainController() {
         this.decisionTreeMapper = new DecisionTreeMapper(); 
         this.mainView = new MainView();
-         
+        this.nodecursor = getDecisionTree().getRoot();
     }
 
-    public MainView getMainprivateView() {
+    public MainView getMainView() {
         return mainView;
     }
     
@@ -38,8 +38,20 @@ public class MainController {
         return (mainController == null)? mainController = new MainController() : mainController;
 
     }
-    public void makeChoice(String choice){
+    public void makeChoice(int choice){
+        if (choice == 1){
+            nodecursor = ((QuestionNode)nodecursor).getYes();
+        }else if(choice == 2){
+            nodecursor = ((QuestionNode)nodecursor).getNo();
+        }
+        getMainView().print();
+    }
+    public Node getNodecursor() {
+        return nodecursor;
+    }
     
-        System.out.println("123");
+    public void addAnswer (String animal,String question){
+        getDecisionTree().addQuestion(nodecursor, question, animal);
+        decisionTreeMapper.persist();
     }
 }

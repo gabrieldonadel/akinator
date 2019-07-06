@@ -9,13 +9,21 @@ package br.ufsc.ine5609.akinator;
  *
  * @author Dall Agnol
  */
+import java.util.Scanner;
+
 public class Akinator{
       
     public static void main(String[] args) {
+       MainController controller = MainController.getInstance();
+       QuestionNode root = (QuestionNode) controller.getDecisionTree().getRoot();
+       System.out.println(root.getQuestion());
+       
+       Scanner scn = new Scanner(System.in);
+       String decision = scn.nextLine();
+       
+       controller.makeChoice(decision);
+       controller.getDecisionTree().t2(root);
         
-        DecisionTreeMapper  decisionTreeMapper= new DecisionTreeMapper();
-        DecisionTree decisionTree = decisionTreeMapper.getDecisionTree();
-        decisionTree.t2(decisionTree.root);
-        System.out.println(((QuestionNode)decisionTree.getRoot()).getQuestion());
+
     }
 }

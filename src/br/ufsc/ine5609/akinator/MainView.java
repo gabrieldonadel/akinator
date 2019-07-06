@@ -35,7 +35,7 @@ public class MainView {
     
     public void scanner (){
        Scanner scn = new Scanner(System.in);
-       System.out.print("RESPONDA: ");
+       System.out.print("RESPONDA [ 1 / 2 ]: ");
        int decision = scn.nextInt();
        
        MainController.getInstance().makeChoice(decision);
@@ -56,18 +56,18 @@ public class MainView {
     }
     public void finalAnswer(){
        Scanner scn = new Scanner(System.in);
-       System.out.print("RESPONDA: ");
+       System.out.print("RESPONDA [ 1 / 2 ]: ");
        int decision = scn.nextInt();
        
        if (decision == 1){
            return;
        }else{
            System.out.println("Então qual é o animal que você pensou?");
-           System.out.print("RESPONDA: ");
+           System.out.print("RESPONDA [ TEXTO ]: ");
            scn.nextLine();
            String newAnimal = scn.nextLine();
            System.out.println("O que diferência um(a) " + ((DataNode)MainController.getInstance().getNodecursor()).getAnswer() + " de um(a) " + newAnimal +" ?");
-           System.out.print("RESPONDA: ");
+           System.out.print("RESPONDA [ TEXTO ]: ");
            String newQuestion = scn.nextLine();
            MainController.getInstance().addAnswer(newAnimal, newQuestion);
            System.out.println("Na proxima não errarei!");

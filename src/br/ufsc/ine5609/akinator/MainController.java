@@ -5,11 +5,6 @@
  */
 package br.ufsc.ine5609.akinator;
 
-import com.sun.glass.ui.Cursor;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -28,7 +23,7 @@ public class MainController {
          
     }
 
-    public MainView getMainView() {
+    public MainView getMainprivateView() {
         return mainView;
     }
     
@@ -42,5 +37,9 @@ public class MainController {
     public static MainController getInstance(){
         return (mainController == null)? mainController = new MainController() : mainController;
 
+    }
+    public void makeChoice(String choice){
+    
+        System.out.println("123");
     }
 }

@@ -24,7 +24,7 @@ public class DecisionTreeMapper {
     
     public DecisionTreeMapper(){
         this.cacheDecisionTree = new DecisionTree("Gato");
-        cacheDecisionTree.addQuestion(cacheDecisionTree.getRoot(), "Melhor amigo do Homem", "Cachorro");
+        cacheDecisionTree.addQuestion(cacheDecisionTree.getRoot(), "É o melhor amigo do Homem?", "Cachorro");
         load();
     }
     public void load(){

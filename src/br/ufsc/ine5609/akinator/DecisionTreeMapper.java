@@ -23,12 +23,8 @@ public class DecisionTreeMapper {
     private final String filename = "decisiontree.blob";
     
     public DecisionTreeMapper(){
-        this.cacheDecisionTree = new DecisionTree("Gato");
-
-        cacheDecisionTree.addQuestion(cacheDecisionTree.getRoot(), "É o melhor amigo do Homem", "Cachorro");
-        Node no = ((QuestionNode) cacheDecisionTree.getRoot()).getNo();
-        cacheDecisionTree.addQuestion(no, "Este animal coloca ovo", "Galinha");
-
+        this.cacheDecisionTree = new DecisionTree("Galinha"); 
+        cacheDecisionTree.addQuestion(cacheDecisionTree.getRoot(), "É mamifero", "Cachorro"); 
         load();
     }
     public void load(){

@@ -20,7 +20,7 @@ public class MainController {
     private MainController() {
         this.decisionTreeMapper = new DecisionTreeMapper(); 
         this.mainView = new MainView();
-        this.nodecursor = getDecisionTree().getRoot();
+        this.nodecursor = getDecisionTree().getRoot(); 
     }
 
     public MainView getMainView() {

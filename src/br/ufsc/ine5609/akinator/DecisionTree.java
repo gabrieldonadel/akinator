@@ -5,10 +5,7 @@
  */
 package br.ufsc.ine5609.akinator;
 
-import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.io.Serializable; 
 
 /**
  *
@@ -26,93 +23,59 @@ public class DecisionTree implements Serializable{
         if (root.equals(wrong)){
             root = node;
         }else{
-          QuestionNode parentNode =(QuestionNode) inOrderTraversal(root, wrong);
-          if(parentNode.getNo().equals(wrong)){
-              parentNode.setNo(node);
-          }else if(parentNode.getYes().equals(wrong)){
-              parentNode.setYes(node);
-          }
+            QuestionNode parentNode =(QuestionNode) getParentNode( wrong); 
+            if(parentNode.getNo().equals(wrong)){
+                parentNode.setNo(node);
+            }else if(parentNode.getYes().equals(wrong)){
+                parentNode.setYes(node);
+            } 
         }
         
     }
     
-    public QuestionNode getParentNode(Node node){
-        QuestionNode result = this.root.isQuestionNode() ? (QuestionNode)this.root :null;
-        while(result.getNo() != node){
-        
+    public Node getParentNode(Node child){ 
+        Node result = null;
+        if(root==null){
+            return null;
         }
+        if(root.isQuestionNode()){
+            if(((QuestionNode)root).getYes().equals(child) || ((QuestionNode)root).getNo().equals(child)){
+                return root;
+            }
+            Node yes = getParentNode(((QuestionNode)root).getYes(),child);
+            if(yes != null){
+                result = yes;
+            }
+            Node no = getParentNode(((QuestionNode)root).getNo(),child);
+            if(no != null){
+                result = no;
+            }
             
+        }
         return result;
     }
-    
-    public Node t2(Node root){
-        
-        Stack<Node> parentStack = new Stack<Node>();
-        Node parent = null;
-            if(root != null && root.isQuestionNode()){
-                if(parentStack.size()==0){
-                    parentStack.push(root);
-                }
-                 
-                if(((QuestionNode)root).getNo()!=null){
-                    parentStack.push(root); 
-                    t2(((QuestionNode)root).getNo());  
-                }
-                parent = parentStack.pop();
-                
-                if(((QuestionNode)root).getYes()!=null){
-                    parentStack.push(root);
-                    t2(((QuestionNode)root).getNo());
-                }
-                if(!root.isQuestionNode()){
-                    System.out.println("deu ruim");
-                }
-            }
-            else{
-                if(root==null){System.err.println("Can't process a empty root tree");}
-            }
-        return parent;
-    }
-    
-   
-
-    public Node inOrderTraversal(Node root, Node key){
-        
-        Stack<Node> parentStack = new Stack<Node>();
-        Node parent = null;
-            if(root != null && root.isQuestionNode()){
-                if(parentStack.size()==0){
-                    parentStack.push(root);
-                }
-                if(key.equals(root)){System.out.println("ae carai");
+    public Node getParentNode(Node root, Node child){
+        Node result = null;
+        if(root==null){
+            return null;
+        }
+        if(root.isQuestionNode()){
+            if(((QuestionNode)root).getYes().equals(child) || ((QuestionNode)root).getNo().equals(child)){
                 return root;
-                }
-                if(((QuestionNode)root).getNo()!=null){
-                    parentStack.push(root); 
-                    inOrderTraversal(((QuestionNode)root).getNo(), key);  
-                }
-                parent = parentStack.pop();
-                
-                if(((QuestionNode)root).getYes()!=null){
-                    parentStack.push(root);
-                    inOrderTraversal(((QuestionNode)root).getNo(), key);
-                }
-                if(!root.isQuestionNode()){
-                    System.out.println("deu ruim");
-                }
             }
-            else{
-                if(root==null){System.err.println("Can't process a empty root tree");}
+            Node yes = getParentNode(((QuestionNode)root).getYes(),child);
+            if(yes != null){
+                result = yes;
             }
-        return parent;
-    }
-    
- 
-
+            Node no = getParentNode(((QuestionNode)root).getNo(),child);
+            if(no != null){
+                result = no;
+            }
+        }
+        return result;
+    } 
     public Node getRoot() {
         return root;
     }
     
-    
-     
 }

@@ -47,5 +47,10 @@ public class QuestionNode extends Node{
     public void setNo(Node no) {
         this.no = no;
     }
+
+    @Override
+    public boolean isQuestionNode() {
+        return true;
+    }
     
 }

@@ -15,6 +15,12 @@ public class DataNode extends Node{
     public DataNode(String answer) {
         this.answer = answer;
     }
+
+    @Override
+    public boolean isQuestionNode() {
+       return false;
+    }
+    
     
     
 }

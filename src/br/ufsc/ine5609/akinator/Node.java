@@ -10,5 +10,5 @@ package br.ufsc.ine5609.akinator;
  * @author Dall Agnol
  */
 public abstract class Node {
-    
+    public abstract boolean isQuestionNode();
 }

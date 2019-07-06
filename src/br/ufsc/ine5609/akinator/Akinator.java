@@ -15,6 +15,7 @@ public class Akinator{
         
         DecisionTreeMapper  decisionTreeMapper= new DecisionTreeMapper();
         DecisionTree decisionTree = decisionTreeMapper.getDecisionTree();
+        decisionTree.t2(decisionTree.root);
         System.out.println(((QuestionNode)decisionTree.getRoot()).getQuestion());
     }
 }
